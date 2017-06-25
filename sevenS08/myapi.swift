@@ -32,10 +32,10 @@ class c3 {
 class c4 {
     var x:Int
     var y:Int
-    //    init(){  //不能兩個init
-    //    }
+//        init(){  //不能兩個init
+//        }
     init(x:Int, y:Int) {
-        //        x = newx; y = newy
+        //       或 x = newx; y = newy
         self.x = x; self.y = y
     }
     func m1()->Int {
@@ -44,21 +44,19 @@ class c4 {
     
 }
 
-//var obj4 = c4(newx:3, newy:4)
-var obj4 = c4(x:3,y:4)
-//print(obj4.x)
-//print(obj4.m1())
+
 
 
 
 
 
 class Student {
-    var m:Int
-    var e:Int
-    var c:Int
-    var sid:String
+    var m:Int     //math
+    var e:Int       //english
+    var c:Int       //chinese
+    var sid:String  //student id
     
+    //底線表 傳遞參數的名稱不用寫 如s1("s01") 不用 s1(sid:"s01")
     init( _ sid:String ,_ m:Int, _ e:Int, _ c:Int) {
     self.m = m
     self.e = e
@@ -121,8 +119,8 @@ class c6 {
 
 
 class c5 {
-    var p1 = c6()
-    lazy var p2:c6 = c6()  //不馬上跑建構式 第一次叫用 會初始化
+    var p1 = c6()   //一開始先跑c6()
+    lazy var p2:c6 = c6()  //不馬上跑建構式 僅第一次叫用會執行
     func dosth() {
         print("ok")
         p2.m1()
@@ -137,17 +135,42 @@ struct MyClass3 {
 
 }
 
+//******struc 補充
+
+//struct get set的故事
+
+
+//get practice
+struct  MyTest {
+    var a9 = MyClass3()
+    var a10:MyClass3 {
+        get {
+          let newx = a9.x + 10
+            let newy = a9.y + 10
+           
+            return MyClass3(x:newx,y:newy)
+        }
+    
+    }
+}
+
+
+
+
 struct MyClass4 {
-    var v1 = MyClass3()
+    var v1 = MyClass3()  // ==> x = 1 ; y = 1
     var v2:MyClass3 {
         get {    //取值要return
             let newx = v1.x + 10
             let newy = v1.y + 20
             return MyClass3(x:newx, y:newy)
         }
-        set(aClss3Obj) {    //給值要帶參數---aClss3Obj僅為參數名稱
-            v1.x = aClss3Obj.x - 10
-            v1.y = aClss3Obj.y - 30
+        set(aClass3Obj) {    //給值要帶參數---aClss3Obj僅為參數名稱
+            v1.x = aClass3Obj.x - 30   //為什麼set 是代v1.x???
+            v1.y = aClass3Obj.y - 30
+            
+         
+            
         }
     }
     var v3:MyClass3 {
@@ -175,6 +198,19 @@ struct MyClass4 {
 
 class MyScore {
     var x = 0, y = 0, z = 0;
+    
+    //或者用初始化  但new Obj need parameter
+//    var x:Int
+//    var y:Int
+//    var z:Int
+//    init(_ x:Int,_ y:Int,_ z:Int) {
+//      self.x = x
+//        self.y = y
+//        self.z = z
+//     
+//    }
+    
+    
     var sum:Int {  //值 因 x, y, z 而不同
 //        get { 只get的話可省略
             return x + y + z
@@ -192,6 +228,8 @@ class MyScore {
     
 }
 
+
+//******  willSet didSet
     class MyClass5 {
         var x :Int = 0 {
             willSet(newx){  //before set
@@ -208,7 +246,7 @@ class MyScore {
     }
     
     
-
+//******補充 struct與class差別    struct can't change var value
 
 struct MyStruct111 {
     var a = 1
