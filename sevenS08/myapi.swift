@@ -12,7 +12,6 @@ import Foundation
 class c1 {
     
 }
-var obj1 = c1()
 //print(type(of:obj1))
 
 class c2 {
@@ -20,9 +19,6 @@ class c2 {
         print("init")
     }
 }
-var obj2 = c2()
-
-//print(type(of:obj2))
 
 
 class c3 {
@@ -31,9 +27,7 @@ class c3 {
     init() {}
 }
 
-var obj3 = c3()
-//print(obj3.x)   //x 表屬性的成員(member)
-//print(obj3.y)
+
 
 class c4 {
     var x:Int
